@@ -34,7 +34,7 @@ export default function Card({
           p="7px"
           position="absolute"
           bottom="0"
-          bg="#5A5A5A99"
+          bg="#0D253D"
           backdropFilter="blur(2.5px)"
           w="100%"
           textAlign="center"

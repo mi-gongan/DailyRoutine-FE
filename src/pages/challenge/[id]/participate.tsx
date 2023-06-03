@@ -46,15 +46,15 @@ export default function Participate() {
       viewMethods: [],
     });
     try {
-      await contract.participate(
-        {
-          challenge_id: Number(id),
-          value: Number(betAmount),
-        },
-        300000000000000,
-        parseNearAmount(betAmount),
-      );
-      setIsModalOpen(true);
+      // await contract.participate(
+      //   {
+      //     challenge_id: Number(id),
+      //     value: Number(betAmount),
+      //   },
+      //   300000000000000,
+      //   parseNearAmount(betAmount),
+      // );
+      router.push('/my-challenges');
     } catch (e) {
       console.log(e);
       setLoading(false);
@@ -115,7 +115,7 @@ export default function Participate() {
                 mt="12px"
                 mb="38px"
                 p="4px 10px"
-                bg="#323232"
+                bg="#0A1F33"
                 borderRadius="4px"
                 w="fit-content"
               >
@@ -175,7 +175,7 @@ export default function Participate() {
           <Skeleton />
         </>
       )}
-      <Modal
+      {/* <Modal
         isOpen={isModalOpen}
         onClose={() => {
           setIsModalOpen(false);
@@ -192,7 +192,7 @@ export default function Participate() {
         <Text mt="12px" fontSize="17px" lineHeight="24px">
           Start the challenge right away by completing the mission!
         </Text>
-      </Modal>
+      </Modal> */}
     </>
   );
 }

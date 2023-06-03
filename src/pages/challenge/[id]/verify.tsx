@@ -100,7 +100,7 @@ export default function Verify() {
       <Header
         title="Verify"
         returnUrl={`/my-challenges`}
-        background={color.black}
+        background={color.background.main}
       />
       <Box
         pt={16}
@@ -109,7 +109,7 @@ export default function Verify() {
         flexDirection="column"
         flex={1}
       >
-        <Box p="28px 20px 26px 20px" bg={color.black}>
+        <Box p="28px 20px 26px 20px" bg={color.background.main}>
           <Box display="flex" alignItems="center" gap="8px">
             <Image
               alt="organizer"

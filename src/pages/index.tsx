@@ -63,10 +63,10 @@ export default function Splash() {
             flexDir="column"
             alignItems="center"
             justifyContent="center"
-            transition="backdrop-filter 3s"
-            {...(isBlur && {
-              backdropFilter: 'blur(10px)',
-            })}
+            // transition="backdrop-filter 3s"
+            // {...(isBlur && {
+            //   backdropFilter: 'blur(10px)',
+            // })}
           >
             <Box m="auto">
               <Image

@@ -29,7 +29,7 @@ export const challengeList: Array<ChallengeType> = [
     nfts: [
       {
         title: 'eth-seoul',
-        image: '/images/dummy/nfts/nft_1.png',
+        image: '/images/dummy/nfts/nft_1.GIF',
         description:
           "We'll pick 500 people\nwho succeed in this challenge\nand give them rtfkt nft",
       },
@@ -60,7 +60,7 @@ export const challengeList: Array<ChallengeType> = [
     nfts: [
       {
         title: 'eth-seoul',
-        image: '/images/dummy/nfts/nft_1.png',
+        image: '/images/dummy/nfts/nft_1.GIF',
         description:
           "We'll pick 500 people\nwho succeed in this challenge\nand give them rtfkt nft",
       },
@@ -91,7 +91,7 @@ export const challengeList: Array<ChallengeType> = [
     nfts: [
       {
         title: 'eth-seoul',
-        image: '/images/dummy/nfts/nft_1.png',
+        image: '/images/dummy/nfts/nft_1.GIF',
         description: 'Achieved 5 times of\nexercise challenge',
       },
     ],
@@ -121,7 +121,7 @@ export const challengeList: Array<ChallengeType> = [
     nfts: [
       {
         title: 'ethseoul',
-        image: '/images/dummy/nfts/nft_1.png',
+        image: '/images/dummy/nfts/nft_1.GIF',
         description: 'Achieved 5 times of\nexercise challenge',
       },
     ],
@@ -151,7 +151,7 @@ export const challengeList: Array<ChallengeType> = [
     nfts: [
       {
         title: 'ethseoul',
-        image: '/images/dummy/nfts/nft_1.png',
+        image: '/images/dummy/nfts/nft_1.GIF',
         description: 'Achieved 5 times of\nexercise challenge',
       },
     ],
@@ -181,7 +181,7 @@ export const challengeList: Array<ChallengeType> = [
     nfts: [
       {
         title: 'ethseoul',
-        image: '/images/dummy/nfts/nft_1.png',
+        image: '/images/dummy/nfts/nft_1.GIF',
         description: 'Achieved 5 times of\nexercise challenge',
       },
     ],
@@ -211,7 +211,7 @@ export const challengeList: Array<ChallengeType> = [
     nfts: [
       {
         title: 'ethseoul',
-        image: '/images/dummy/nfts/nft_1.png',
+        image: '/images/dummy/nfts/nft_1.GIF',
         description: 'Achieved 5 times of\nexercise challenge',
       },
     ],
@@ -359,7 +359,7 @@ export const executions: Array<ExecutionType> = [
 export const myNfts: Array<NftType> = [
   {
     hash: '0xfhfwiljfo32ughwke09vdjnSJHFK4343jkfjw',
-    image: '/images/dummy/my-nfts/my_nft_1.png',
+    image: '/images/dummy/my-nfts/my_nft_1.GIF',
   },
   {
     hash: '0xfhfwiljfo32uJIOERJOWI3443343jkfjw',

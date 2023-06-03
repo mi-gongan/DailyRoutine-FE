@@ -17,7 +17,7 @@ export default function RangeBar({ min, max, avg }) {
           height="inherit"
           borderRadius="99px"
           position="relative"
-          bg="linear-gradient(90deg, #89974f 12.9%, #E7FF86 59.47%, #828d58 90.52%)"
+          bg="#E7FF86"
         >
           <Text
             position="absolute"
