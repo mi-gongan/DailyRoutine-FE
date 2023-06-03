@@ -16,11 +16,11 @@ function Admin() {
     if (!account) return;
     const contract: any = new Contract(account, CONTRACT_ID, {
       changeMethods: ['setting'],
-      viewMethods: ['get_challenge_info'],
-      // viewMethods: ['get_participants'],
+      // viewMethods: ['get_challenge_info'],
+      viewMethods: ['get_participants'],
     });
-    // const res = await contract.get_participants({ challenge_id: Number(id) });
-    const res = await contract.get_challenge_info({ challenge_id: Number(id) });
+    const res = await contract.get_participants({ challenge_id: Number(id) });
+    // const res = await contract.get_challenge_info({ challenge_id: Number(id) });
     console.log('res', res);
     const receipt = await contract.setting({
       moderator_require_amount: 100,
