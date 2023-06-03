@@ -1,7 +1,7 @@
 import { Box, Text } from '@chakra-ui/react';
 import Head from 'next/head';
 import { useRouter } from 'next/router';
-import React, { useCallback, useEffect, useState } from 'react';
+import React, { use, useCallback, useEffect, useState } from 'react';
 import Header from 'src/components/common/Header';
 import { color } from 'src/components/styles/colors';
 import { challengeList, executions } from 'src/dummyData';
@@ -19,7 +19,7 @@ import { VerifyUnit } from 'src/pages/api/execution/verify-execution';
 
 export default function Moderate() {
   const router = useRouter();
-  const { id } = router.query;
+  const { id, transactionHashes } = router.query;
 
   const [current, setCurrent] = useState(0);
   const [isModalOpen, setIsModalOpen] = useState(false);
@@ -90,10 +90,22 @@ export default function Moderate() {
       console.error(e);
       return;
     }
-    await axios.post('/api/execution/verify-execution', {
-      verifyUnits: tempVerifiedUnits,
-    });
   };
+
+  useEffect(() => {
+    if (transactionHashes) {
+      const main = async () => {
+        await axios
+          .post('/api/execution/verify-execution', {
+            verifyUnits: tempVerifiedUnits,
+          })
+          .then((res) => {
+            router.push('/challenges');
+          });
+      };
+      main();
+    }
+  }, [transactionHashes]);
 
   return (
     <>
@@ -220,16 +232,24 @@ export default function Moderate() {
             </Box>
           )}
           {current === executions.length ? (
-            <Button
-              onClick={() => {
-                verifySubmit();
+            <div
+              style={{
+                position: 'absolute',
+                bottom: '20px',
+                width: '100%',
               }}
-              background={color.primary}
-              h="60px"
-              borderRadius="21px"
             >
-              Submit
-            </Button>
+              <Button
+                onClick={() => {
+                  verifySubmit();
+                }}
+                background={color.primary}
+                h="60px"
+                borderRadius="21px"
+              >
+                Submit
+              </Button>
+            </div>
           ) : (
             <Box
               mt="auto"

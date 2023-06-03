@@ -110,13 +110,7 @@ function Admin() {
       changeMethods: ['verify'],
       viewMethods: [],
     });
-    arr = [
-      {
-        challenge_id: 1,
-        user: accountId,
-        index: 1,
-      },
-    ];
+
     await contract.verify({ moderator: accountId, verify_units: arr });
     alert('finish');
   };
