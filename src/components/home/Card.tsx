@@ -23,6 +23,9 @@ export default function Card({
         !disabled &&
         router.push(`challenge/${String(process.env.NEXT_PUBLIC_ID)}`)
       }
+      style={{
+        opacity: disabled ? '0.5' : '1',
+      }}
     >
       <Box position="relative" borderRadius="9px" overflow="hidden">
         <Box position="relative" width="100%" pt="calc(100% * 142 / 168)">

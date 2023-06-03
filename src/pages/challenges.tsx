@@ -80,7 +80,35 @@ export default function Challenges() {
           gridTemplateColumns="repeat(2, 1fr)"
           gap="32px 14px"
         >
-          <Card {...challengeList[0]} deposit={Number(totalAmount)} />
+          <div
+            style={{
+              position: 'relative',
+            }}
+          >
+            <div
+              style={{
+                position: 'absolute',
+                top: 70,
+                left: 0,
+                opacity: 1,
+                color: 'white',
+                fontSize: 24,
+                fontWeight: 800,
+                zIndex: 20,
+                width: '100%',
+                height: '100%',
+                display: 'flex',
+                justifyContent: 'center',
+              }}
+            >
+              participated
+            </div>
+            <Card
+              {...challengeList[0]}
+              deposit={Number(totalAmount)}
+              disabled={myChallenges.length !== 0}
+            />
+          </div>
           {challengeList.map((challenge, i) => {
             if (i === 0) return <></>;
             return (
