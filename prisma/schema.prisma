@@ -1,0 +1,26 @@
+generator client {
+  provider = "prisma-client-js"
+}
+
+datasource db {
+  provider = "postgresql"
+  url      = env("DATABASE_URL")
+}
+
+model Execution {
+  id          String          @id @default(cuid())
+  account     String
+  challengeId String
+  count       Int
+  imagePath   String
+  imageName   String
+  status      ExecutionStatus
+
+  @@unique([account, challengeId, count])
+}
+
+enum ExecutionStatus {
+  success
+  pending
+  rejected
+}
