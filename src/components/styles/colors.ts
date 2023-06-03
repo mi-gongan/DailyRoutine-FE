@@ -14,7 +14,7 @@ const background = {
   main: '#000E1B',
   modal: '#000000A6',
   grey1: '#D9D9D9',
-  grey2: '#4E4E4E',
+  grey2: '#0D253D',
   grey3: '#363636',
   grey4: '#292B2E',
   grey5: '#3A3A3A',
