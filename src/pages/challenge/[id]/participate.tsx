@@ -62,7 +62,6 @@ export default function Participate() {
       );
       router.push('/my-challenges');
     } catch (e) {
-      console.log(e);
       setLoading(false);
       return;
     }

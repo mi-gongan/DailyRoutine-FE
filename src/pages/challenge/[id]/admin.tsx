@@ -21,17 +21,15 @@ function Admin() {
     });
     const res = await contract.get_participants({ challenge_id: Number(id) });
     // const res = await contract.get_challenge_info({ challenge_id: Number(id) });
-    console.log('res', res);
     const receipt = await contract.setting({
       moderator_require_amount: 100,
       platform_fee: 10,
     });
-    console.log('receipt', receipt);
+    alert('finish');
   };
 
   const challengeSetting = async () => {
     if (!account) return;
-    console.log(id);
     const contract: any = new Contract(account, CONTRACT_ID, {
       changeMethods: ['challenge_setting'],
       viewMethods: [],

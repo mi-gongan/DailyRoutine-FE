@@ -76,7 +76,6 @@ export default function Moderate() {
   };
 
   const verifySubmit = async () => {
-    console.log(verifiedUnits);
     const contract: any = new Contract(account, CONTRACT_ID, {
       changeMethods: ['verify'],
       viewMethods: [],

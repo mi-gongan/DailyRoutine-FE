@@ -12,7 +12,12 @@ import { nearFormat } from 'src/utils/format';
 
 export default function Challenges() {
   const [totalAmount, setTotalAmount] = React.useState('');
-  const [myChallenges, setMyChallenges] = React.useState([]);
+  const [myChallenges, setMyChallenges] = React.useState<
+    {
+      challenge_id: number;
+      image: string;
+    }[]
+  >([]);
   const { account, accountId } = useNear();
 
   const getMyChallenges = useCallback(async () => {
@@ -27,8 +32,9 @@ export default function Challenges() {
     });
 
     setMyChallenges(
-      res.map((id) => {
+      res.map((id, idx) => {
         return {
+          challenge_id: id,
           image: '/images/dummy/challenges/challenge_ethseoul_1x1.png',
         };
       }),
@@ -49,6 +55,7 @@ export default function Challenges() {
     const res = await contract.get_total_betting_amount({
       challenge_id: Number(process.env.NEXT_PUBLIC_ID),
     });
+
     setTotalAmount(res);
   }, [account]);
 
@@ -85,28 +92,39 @@ export default function Challenges() {
               position: 'relative',
             }}
           >
-            <div
-              style={{
-                position: 'absolute',
-                top: 70,
-                left: 0,
-                opacity: 1,
-                color: 'white',
-                fontSize: 24,
-                fontWeight: 800,
-                zIndex: 20,
-                width: '100%',
-                height: '100%',
-                display: 'flex',
-                justifyContent: 'center',
-              }}
-            >
-              participated
-            </div>
+            {myChallenges.find(
+              (challenge) =>
+                challenge.challenge_id === Number(process.env.NEXT_PUBLIC_ID),
+            ) && (
+              <div
+                style={{
+                  position: 'absolute',
+                  top: 70,
+                  left: 0,
+                  opacity: 1,
+                  color: 'white',
+                  fontSize: 24,
+                  fontWeight: 800,
+                  zIndex: 20,
+                  width: '100%',
+                  height: '100%',
+                  display: 'flex',
+                  justifyContent: 'center',
+                }}
+              >
+                participated
+              </div>
+            )}
             <Card
               {...challengeList[0]}
               deposit={Number(totalAmount)}
-              disabled={myChallenges.length !== 0}
+              disabled={
+                myChallenges.find(
+                  (challenge) =>
+                    challenge.challenge_id ===
+                    Number(process.env.NEXT_PUBLIC_ID),
+                ) !== undefined
+              }
             />
           </div>
           {challengeList.map((challenge, i) => {

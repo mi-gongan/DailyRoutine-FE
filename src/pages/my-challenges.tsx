@@ -57,7 +57,6 @@ export default function MyChallenges() {
       }),
     );
   }, [account, accountId]);
-  console.log(myChallenges);
   useEffect(() => {
     getMyChallenges();
   }, [getMyChallenges]);

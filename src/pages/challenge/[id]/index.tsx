@@ -42,7 +42,7 @@ export default function Detail() {
           <Text fontSize="17px" lineHeight="23.5px" color={color.text.grey4}>
             {challenge.description}
           </Text>
-          <Text
+          {/* <Text
             mt="36px"
             fontWeight={800}
             fontSize="20px"
@@ -50,8 +50,8 @@ export default function Detail() {
             color={color.primary}
           >
             🏆 You can get this NFT
-          </Text>
-          <Grid mt="12px" gridTemplateColumns="repeat(3, 1fr)" gap="8px">
+          </Text> */}
+          {/* <Grid mt="12px" gridTemplateColumns="repeat(3, 1fr)" gap="8px">
             {challenge.nfts.map((nft, i) => (
               <Box
                 key={`challenge-${i}`}
@@ -67,7 +67,7 @@ export default function Detail() {
                 />
               </Box>
             ))}
-          </Grid>
+          </Grid> */}
           <Text
             mt="32px"
             fontWeight={800}
