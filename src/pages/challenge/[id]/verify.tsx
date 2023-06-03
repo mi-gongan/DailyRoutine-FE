@@ -53,7 +53,9 @@ export default function Verify() {
         },
       })
     ).data;
-
+    if (res === undefined) {
+      setExecution({ status: 'load' });
+    }
     setExecution(res[0]);
   };
 

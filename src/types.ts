@@ -43,7 +43,8 @@ export type ImageUploadStatus =
   | 'uploading'
   | 'success'
   | 'pending'
-  | 'rejected';
+  | 'rejected'
+  | 'load';
 
 export type NftType = {
   image: string;

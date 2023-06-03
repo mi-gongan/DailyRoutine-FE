@@ -19,7 +19,7 @@ export default function ImageUpload({ timeLeft, onSubmit, execution }: Props) {
 
   const buttonAttributes = useMemo(() => {
     switch (status) {
-      case 'none':
+      case 'load':
         return {
           bgColor: '#5B5B5B',
           color: color.white,
