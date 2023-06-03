@@ -11,13 +11,7 @@ export default function AccountInfo() {
   const { balance, accountId } = useNear();
 
   return (
-    <Grid
-      p="5px 20px"
-      gap="20px"
-      onClick={() => {
-        router.push('/account/balance');
-      }}
-    >
+    <Grid p="5px 20px" gap="20px">
       <Box px="4px" display="flex" alignItems="center">
         {accountId && (
           <Image
@@ -78,6 +72,9 @@ export default function AccountInfo() {
             position: 'absolute',
             top: '18px',
             right: '16px',
+          }}
+          onClick={() => {
+            router.push('/account/balance');
           }}
         >
           <Image

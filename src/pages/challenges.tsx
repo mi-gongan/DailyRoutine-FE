@@ -1,15 +1,16 @@
 import { Box, Grid, Text } from '@chakra-ui/react';
 import { Contract } from 'near-api-js';
 import Head from 'next/head';
-import React, { useCallback, useEffect } from 'react';
+import React, { use, useCallback, useEffect } from 'react';
 import { Categories, Navbar, Skeleton } from 'src/components/common';
 import { AccountInfo, Card, MyChallenges } from 'src/components/home';
 import { challengeList } from 'src/dummyData';
 import useNear from 'src/hook/useNear';
 import { CONTRACT_ID } from 'src/utils/contract';
+import { nearFormat } from 'src/utils/format';
 
 export default function Challenges() {
-  const [totalAmount, setTotalAmount] = React.useState(0);
+  const [totalAmount, setTotalAmount] = React.useState('');
   const [myChallenges, setMyChallenges] = React.useState([]);
   const { account, accountId } = useNear();
 
@@ -32,10 +33,29 @@ export default function Challenges() {
       }),
     );
   }, [account, accountId]);
-  console.log(myChallenges);
+
   useEffect(() => {
     getMyChallenges();
   }, [getMyChallenges]);
+
+  const getTotalAmount = useCallback(async () => {
+    if (!account) return;
+    const contract: any = new Contract(account, CONTRACT_ID, {
+      changeMethods: [],
+      viewMethods: ['get_total_betting_amount'],
+    });
+    if (!contract) return;
+    const res = await contract.get_total_betting_amount({
+      challenge_id: challengeList[0].id,
+    });
+
+    setTotalAmount(nearFormat(res));
+  }, []);
+
+  useEffect(() => {
+    if (!account) return;
+    getTotalAmount();
+  }, [account, accountId]);
   return (
     <>
       <Head>
@@ -60,7 +80,7 @@ export default function Challenges() {
           gridTemplateColumns="repeat(2, 1fr)"
           gap="32px 14px"
         >
-          <Card {...challengeList[0]} deposit={totalAmount} />
+          <Card {...challengeList[0]} deposit={Number(totalAmount)} />
           {challengeList.map((challenge, i) => {
             if (i === 0) return <></>;
             return (

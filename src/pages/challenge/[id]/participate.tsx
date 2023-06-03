@@ -26,7 +26,13 @@ export default function Participate() {
   const { id } = router.query;
   const { balance, accountId, account } = useNear();
   const [loading, setLoading] = useState(false);
-  const [isModalOpen, setIsModalOpen] = useState(false);
+  const { transactionHashes } = useRouter().query;
+
+  useEffect(() => {
+    if (transactionHashes) {
+      router.push('/my-challenges');
+    }
+  }, [transactionHashes]);
 
   const challenge = challengeList[0];
 
@@ -46,21 +52,20 @@ export default function Participate() {
       viewMethods: [],
     });
     try {
-      // await contract.participate(
-      //   {
-      //     challenge_id: Number(id),
-      //     value: Number(betAmount),
-      //   },
-      //   300000000000000,
-      //   parseNearAmount(betAmount),
-      // );
+      await contract.participate(
+        {
+          challenge_id: Number(id),
+          value: Number(betAmount),
+        },
+        300000000000000,
+        parseNearAmount(betAmount),
+      );
       router.push('/my-challenges');
     } catch (e) {
       console.log(e);
       setLoading(false);
       return;
     }
-    setIsModalOpen(true);
   };
   return (
     <>
