@@ -49,6 +49,7 @@ export default function Challenges() {
     const res = await contract.get_total_betting_amount({
       challenge_id: Number(challengeList[0].id),
     });
+    console.log(res, Number(challengeList[0].id));
     setTotalAmount(res);
   }, [account]);
 
