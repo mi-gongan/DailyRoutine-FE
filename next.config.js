@@ -3,7 +3,6 @@ module.exports = {
   env: {
     FIREBASE_API_KEY: process.env.FIREBASE_API_KEY,
     DATABASE_URL: process.env.DATABASE_URL,
-    BACKEND_URL: process.env.BACKEND_URL,
   },
   webpack(config) {
     config.module.rules.push({
@@ -18,13 +17,5 @@ module.exports = {
       'firebasestorage.googleapis.com',
       'glitch-hackathon.s3.ap-northeast-2.amazonaws.com',
     ],
-  },
-  async rewrites() {
-    return [
-      {
-        source: '/faucet',
-        destination: process.env.BACKEND_URL + '/faucet',
-      },
-    ];
   },
 };
