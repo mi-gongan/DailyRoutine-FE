@@ -7,7 +7,7 @@ import Image from 'next/image';
 import { useRouter } from 'next/router';
 import React, { useCallback, useEffect, useState } from 'react';
 import { ChallengeInfo } from 'src/components/challenge';
-import { Header } from 'src/components/common';
+import { EmptyBox, Header } from 'src/components/common';
 import { Board } from 'src/components/my-challenges';
 import { color } from 'src/components/styles/colors';
 import { challengeList } from 'src/dummyData';
@@ -77,33 +77,38 @@ export default function MyChallenges() {
         <Text mt="42px" fontWeight="700" fontSize="18px" lineHeight="22px">
           My challenges list
         </Text>
-        <Box mt="12px" display="grid" gap="16px">
-          <Box
-            key={challengeList[0].id}
-            position="relative"
-            onClick={() =>
-              router.push(`/challenge/${challengeList[0].id}/verify`)
-            }
-          >
-            <ChallengeInfo
-              {...challengeList[0]}
-              p="16px 12px"
-              borderRadius="16px"
-              bgColor={color.background.grey4}
-            />
-            <Image
-              alt="chevron-right"
-              src="/icons/ico-chevron-right.svg"
-              width="12"
-              height="17"
-              style={{
-                position: 'absolute',
-                top: '18px',
-                right: '13px',
-              }}
-            />
+        <br />
+        {myChallenges.length !== 0 ? (
+          <Box mt="" display="grid" gap="16px">
+            <Box
+              key={challengeList[0].id}
+              position="relative"
+              onClick={() =>
+                router.push(`/challenge/${challengeList[0].id}/verify`)
+              }
+            >
+              <ChallengeInfo
+                {...challengeList[0]}
+                p="16px 12px"
+                borderRadius="16px"
+                bgColor={color.background.grey4}
+              />
+              <Image
+                alt="chevron-right"
+                src="/icons/ico-chevron-right.svg"
+                width="12"
+                height="17"
+                style={{
+                  position: 'absolute',
+                  top: '18px',
+                  right: '13px',
+                }}
+              />
+            </Box>
           </Box>
-        </Box>
+        ) : (
+          <EmptyBox>No challenges</EmptyBox>
+        )}
       </Box>
     </>
   );

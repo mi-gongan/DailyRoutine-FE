@@ -1,5 +1,6 @@
 import { Box, Grid, Text } from '@chakra-ui/react';
 import { Contract } from 'near-api-js';
+import { formatNearAmount } from 'near-api-js/lib/utils/format';
 import Head from 'next/head';
 import React, { use, useCallback, useEffect } from 'react';
 import { Categories, Navbar, Skeleton } from 'src/components/common';
@@ -48,8 +49,7 @@ export default function Challenges() {
     const res = await contract.get_total_betting_amount({
       challenge_id: Number(challengeList[0].id),
     });
-    console.log(res);
-    setTotalAmount(nearFormat(res));
+    setTotalAmount(res);
   }, [account]);
 
   useEffect(() => {
