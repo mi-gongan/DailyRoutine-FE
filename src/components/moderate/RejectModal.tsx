@@ -1,9 +1,9 @@
-import { Box, Text, Textarea } from "@chakra-ui/react";
-import React, { useEffect, useRef } from "react";
-import { Button } from "../common";
-import { color } from "../styles/colors";
+import { Box, Text, Textarea } from '@chakra-ui/react';
+import React, { useEffect, useRef } from 'react';
+import { Button } from '../common';
+import { color } from '../styles/colors';
 
-const RejectModal = ({ isOpen, onConfirm }) => {
+const RejectModal = ({ isOpen, onConfirm, setIsModalOpen }) => {
   const inputRef = useRef(null);
   const handleSubmit = () => {
     const value = inputRef.current.value;
@@ -11,8 +11,8 @@ const RejectModal = ({ isOpen, onConfirm }) => {
     let modalLayer = document.getElementsByClassName('modal-layer')[0];
     let modalBody = document.getElementsByClassName('modal-body')[0];
     if (modalLayer && modalBody) {
-      (modalLayer as any).style["background-color"] = '#00000000';
-      (modalBody as any).style["transform"] = "translate(-50%, 0)";
+      (modalLayer as any).style['background-color'] = '#00000000';
+      (modalBody as any).style['transform'] = 'translate(-50%, 0)';
     }
     setTimeout(() => {
       onConfirm(value);
@@ -20,12 +20,11 @@ const RejectModal = ({ isOpen, onConfirm }) => {
   };
   useEffect(() => {
     const timer = setTimeout(() => {
-
       let modalLayer = document.getElementsByClassName('modal-layer')[0];
       let modalBody = document.getElementsByClassName('modal-body')[0];
       if (modalLayer && modalBody) {
-        (modalLayer as any).style["background-color"] = color.background.modal;
-        (modalBody as any).style["transform"] = "translate(-50%, -100%)";
+        (modalLayer as any).style['background-color'] = color.background.modal;
+        (modalBody as any).style['transform'] = 'translate(-50%, -100%)';
       }
     }, 100);
     return () => clearTimeout(timer);
@@ -40,10 +39,10 @@ const RejectModal = ({ isOpen, onConfirm }) => {
       left="0"
       right="0"
       bottom="0"
-      bgColor='#00000000'
+      bgColor="#00000000"
       transition="0.5s"
     >
-      <Box 
+      <Box
         className="modal-body"
         position="fixed"
         top="100vh"
@@ -51,7 +50,7 @@ const RejectModal = ({ isOpen, onConfirm }) => {
         transform="translate(-50%, 0)"
         w="min(100%, 500px)"
         p="58px 20px 22px 20px"
-        bg={color.white}
+        bg={color.background.grey4}
         borderTopLeftRadius="20px"
         borderTopRightRadius="20px"
         transition="0.5s"
@@ -64,12 +63,14 @@ const RejectModal = ({ isOpen, onConfirm }) => {
           left="calc(50% - 25px)"
           bg="#D7DBE0"
           borderRadius="99px"
+          onClick={() => {
+            setIsModalOpen(false);
+          }}
+          style={{
+            cursor: 'pointer',
+          }}
         />
-        <Text
-          fontWeight={800}
-          fontSize="26px"
-          lineHeight="32px"
-        >
+        <Text fontWeight={800} fontSize="26px" lineHeight="32px">
           Why didn't it pass?
         </Text>
         <Textarea
@@ -86,25 +87,51 @@ const RejectModal = ({ isOpen, onConfirm }) => {
           borderRadius="18px"
           sx={{
             '&::placeholder': {
-              color: color.text.tertiary
+              color: color.text.tertiary,
             },
             '&:focus, &:hover': {
-              border: 'none !important'
-            }
+              border: 'none !important',
+            },
           }}
         />
-        <Button
-          onClick={handleSubmit}
-          mt="38px"
-          p="16px 20px"
-          borderRadius="21px"
-          h="fit-content"
+        <Box
+          mt="auto"
+          pt="32px"
+          display="grid"
+          gridTemplateColumns="repeat(2, 1fr)"
+          gap="14px"
           fontWeight={700}
-          fontSize="22px"
-          lineHeight="27px"
+          fontSize="24px"
+          lineHeight="30px"
         >
-          Submit
-        </Button>
+          <Button
+            onClick={() => {
+              setIsModalOpen(false);
+            }}
+            mt="38px"
+            p="16px 20px"
+            borderRadius="21px"
+            h="fit-content"
+            fontWeight={700}
+            fontSize="22px"
+            lineHeight="27px"
+            background={'gray'}
+          >
+            Close
+          </Button>{' '}
+          <Button
+            onClick={handleSubmit}
+            mt="38px"
+            p="16px 20px"
+            borderRadius="21px"
+            h="fit-content"
+            fontWeight={700}
+            fontSize="22px"
+            lineHeight="27px"
+          >
+            Submit
+          </Button>
+        </Box>
       </Box>
     </Box>
   );

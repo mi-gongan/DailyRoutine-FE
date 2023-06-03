@@ -4,6 +4,7 @@ import React from 'react';
 import { ExecutionType } from 'src/types';
 import { reduceHashString } from 'src/utils';
 import { color } from '../styles/colors';
+import { Execution } from '@prisma/client';
 
 interface Props {
   executions: Array<ExecutionType>;
@@ -50,7 +51,7 @@ export default function Executions({ executions }: Props) {
               <Image
                 alt={`profile-${i}`}
                 src={`/images/profile/profile_${
-                  (parseInt(execution?.account, 16) % 12) + 1
+                  (parseInt('2', 16) % 12) + 1
                 }.svg`}
                 fill
                 sizes="100% auto"

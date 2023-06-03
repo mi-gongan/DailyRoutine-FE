@@ -19,6 +19,13 @@ export default function ImageUpload({ timeLeft, onSubmit, execution }: Props) {
 
   const buttonAttributes = useMemo(() => {
     switch (status) {
+      case 'none':
+        return {
+          bgColor: '#5B5B5B',
+          color: color.white,
+          disabled: true,
+          text: 'Loading..',
+        };
       case 'pending':
         return {
           bgColor: '#5B5B5B',
@@ -44,7 +51,7 @@ export default function ImageUpload({ timeLeft, onSubmit, execution }: Props) {
         return {
           bgColor: color.primary,
           color: color.background.main,
-          disabled: status !== 'none',
+          // disabled: status !== 'none',
           text: 'Upload',
         };
     }

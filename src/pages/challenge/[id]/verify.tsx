@@ -42,7 +42,7 @@ export default function Verify() {
   useEffect(() => {
     if (!accountId) return;
     getExecutions();
-  }, [accountId, execution]);
+  }, [accountId]);
 
   const getExecution = async () => {
     const res: Execution[] = (
@@ -141,7 +141,7 @@ export default function Verify() {
               <Text fontWeight={800} fontSize="20px" lineHeight="25px">
                 Mine
               </Text>
-              <Box
+              {/* <Box
                 onClick={() => router.push(`/challenge/${id}/my-history`)}
                 ml="auto"
                 display="flex"
@@ -151,7 +151,7 @@ export default function Verify() {
                   View History
                 </Text>
                 <Chevron />
-              </Box>
+              </Box> */}
             </Box>
             <ImageUpload
               timeLeft={challenge.timeLeft}

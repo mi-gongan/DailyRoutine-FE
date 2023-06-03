@@ -2,21 +2,33 @@ import { ExecutionStatus } from '@prisma/client';
 import { NextApiRequest, NextApiResponse } from 'next';
 import prisma from 'src/utils/prisma';
 
+export interface VerifyUnit {
+  address: string;
+  challengeId: string;
+  status: ExecutionStatus;
+  count: number;
+}
+
 export default async function handler(
   req: NextApiRequest,
   res: NextApiResponse,
 ) {
-  const { address, challengeId, status } = req.body;
-  // const data = await prisma.execution.update({
-  //   where: {
-  //     account_challengeId: {
-  //       account: address,
-  //       challengeId,
-  //     },
-  //   },
-  //   data: {
-  //     status,
-  //   },
-  // });
-  // return res.json(data);
+  const { verifyUnits } = req.body;
+  for (let i = 0; i < verifyUnits.length; i++) {
+    const verifyUnit = verifyUnits[i] as VerifyUnit;
+    await prisma.execution.update({
+      where: {
+        account_challengeId_count: {
+          account: verifyUnit.address,
+          challengeId: verifyUnit.challengeId,
+          count: verifyUnit.count,
+        },
+      },
+      data: {
+        status: verifyUnit.status,
+      },
+    });
+  }
+
+  return res.json({ success: true });
 }

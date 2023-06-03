@@ -19,7 +19,7 @@ const background = {
   grey4: '#0A1F33',
   grey5: '#3A3A3A',
   grey6: '#526268',
-  layer1: '#F1F4F5',
+  layer1: '#1A344D',
   layer2: '#E8ECF0',
   layer3: '#E0EFFF',
 };
