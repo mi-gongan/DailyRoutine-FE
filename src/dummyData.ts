@@ -10,7 +10,7 @@ export const account = '0xfs312a2f3E829C0b614566B3E152e417d14q6EP3';
 
 export const challengeList: Array<ChallengeType> = [
   {
-    id: process.env.NEXT_PUBLIC_CHALLENGE_ID!,
+    // id: '26',
     deposit: 3334,
     title: 'Participating in \nETH SEOUL',
     image: '/images/dummy/challenges/challenge_ethseoul.png',
@@ -41,7 +41,7 @@ export const challengeList: Array<ChallengeType> = [
     fontColor: '#FFFFFF',
   },
   {
-    id: '0x6gr239290302e3',
+    // id: '0x6gr239290302e3',
     deposit: 3124,
     title: 'Jogging every \nmorning',
     image: '/images/dummy/challenges/challenge_6.png',
@@ -72,7 +72,7 @@ export const challengeList: Array<ChallengeType> = [
     fontColor: '#FFFFFF',
   },
   {
-    id: '0x6gr9209sdvsdv',
+    // id: '0x6gr9209sdvsdv',
     deposit: 1093,
     title: 'Read 10 pages \nevery day',
     image: '/images/dummy/challenges/challenge_5.png',
@@ -102,7 +102,7 @@ export const challengeList: Array<ChallengeType> = [
     fontColor: color.primary,
   },
   {
-    id: '0x6grsdf9023ier23',
+    // id: '0x6grsdf9023ier23',
     deposit: 6319.09,
     title: 'Working out \nevery day',
     image: '/images/dummy/challenges/challenge_1.png',
@@ -132,7 +132,7 @@ export const challengeList: Array<ChallengeType> = [
     fontColor: '#FFFFFF',
   },
   {
-    id: '0x6gr434902rj23i',
+    // id: '0x6gr434902rj23i',
     deposit: 320.32,
     title: 'Waking up early in \nthe morning',
     image: '/images/dummy/challenges/challenge_4.png',
@@ -162,7 +162,7 @@ export const challengeList: Array<ChallengeType> = [
     fontColor: color.white,
   },
   {
-    id: '0x6gr3290392rwf',
+    // id: '0x6gr3290392rwf',
     deposit: 7439.4,
     title: 'Using stairs instead \nof elevators',
     image: '/images/dummy/challenges/challenge_3.png',
@@ -192,7 +192,7 @@ export const challengeList: Array<ChallengeType> = [
     fontColor: '#FFFFFF',
   },
   {
-    id: '0x6gr23929v23riojfwe',
+    // id: '0x6gr23929v23riojfwe',
     deposit: 432.1,
     title: 'Read a magazine \nevery day',
     image: '/images/dummy/challenges/challenge_2.png',

@@ -26,7 +26,7 @@ export default function MyChallenges() {
     const res: Execution[] = (
       await axios.get('/api/execution/get-my-executions', {
         params: {
-          challengeId: challengeList[0].id,
+          challengeId: String(process.env.NEXT_PUBLIC_ID),
           account: accountId,
         },
       })
@@ -81,10 +81,12 @@ export default function MyChallenges() {
         {myChallenges.length !== 0 ? (
           <Box mt="" display="grid" gap="16px">
             <Box
-              key={challengeList[0].id}
+              key={String(process.env.NEXT_PUBLIC_ID)}
               position="relative"
               onClick={() =>
-                router.push(`/challenge/${challengeList[0].id}/verify`)
+                router.push(
+                  `/challenge/${String(process.env.NEXT_PUBLIC_ID)}/verify`,
+                )
               }
             >
               <ChallengeInfo

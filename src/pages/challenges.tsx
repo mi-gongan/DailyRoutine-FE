@@ -47,9 +47,8 @@ export default function Challenges() {
     });
     if (!contract) return;
     const res = await contract.get_total_betting_amount({
-      challenge_id: Number(challengeList[0].id),
+      challenge_id: Number(process.env.NEXT_PUBLIC_ID),
     });
-    console.log(res, Number(challengeList[0].id));
     setTotalAmount(res);
   }, [account]);
 
@@ -91,11 +90,7 @@ export default function Challenges() {
                   e.preventDefault();
                 }}
               >
-                <Card
-                  key={`${challenge.id}-${i}`}
-                  {...challenge}
-                  disabled={true}
-                />
+                <Card key={`${i}`} {...challenge} disabled={true} />
               </div>
             );
           })}

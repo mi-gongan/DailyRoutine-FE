@@ -8,7 +8,6 @@ import { ChallengeType } from 'src/types';
 import parse from 'html-react-parser';
 
 export default function Card({
-  id,
   deposit,
   title,
   image,
@@ -19,7 +18,12 @@ export default function Card({
 }: ChallengeType) {
   const router = useRouter();
   return (
-    <GridItem onClick={() => !disabled && router.push(`challenge/${id}`)}>
+    <GridItem
+      onClick={() =>
+        !disabled &&
+        router.push(`challenge/${String(process.env.NEXT_PUBLIC_ID)}`)
+      }
+    >
       <Box position="relative" borderRadius="9px" overflow="hidden">
         <Box position="relative" width="100%" pt="calc(100% * 142 / 168)">
           <Image

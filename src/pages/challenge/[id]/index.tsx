@@ -84,49 +84,46 @@ export default function Detail() {
               during the ETH SEOUL Hackathon! 📷
             </ListItem>
           </Box>
-
-          {challenge.id === challengeList[0].id && (
-            <Grid pt="10px" gap="10px" gridTemplateColumns="repeat(3, 1fr)">
-              {[1, 2, 3].map((x) => (
+          <Grid pt="10px" gap="10px" gridTemplateColumns="repeat(3, 1fr)">
+            {[1, 2, 3].map((x) => (
+              <Box
+                key={`example-img-${x}`}
+                position="relative"
+                width="100%"
+                pb="100%"
+                borderRadius="8px"
+                overflow="hidden"
+              >
+                <Image
+                  alt={`example-img-${x}`}
+                  src={`/images/challenge/example_${x}.png`}
+                  fill
+                />
                 <Box
-                  key={`example-img-${x}`}
-                  position="relative"
-                  width="100%"
-                  pb="100%"
-                  borderRadius="8px"
-                  overflow="hidden"
+                  zIndex={1}
+                  position="absolute"
+                  display="flex"
+                  bg={color.background.grey2}
+                  bottom="0"
+                  width="32px"
+                  height="32px"
+                  borderTopRightRadius="8px"
                 >
-                  <Image
-                    alt={`example-img-${x}`}
-                    src={`/images/challenge/example_${x}.png`}
-                    fill
-                  />
-                  <Box
-                    zIndex={1}
-                    position="absolute"
-                    display="flex"
-                    bg={color.background.grey2}
-                    bottom="0"
-                    width="32px"
-                    height="32px"
-                    borderTopRightRadius="8px"
+                  <Text
+                    mt="7px"
+                    mx="auto"
+                    fontWeight="900"
+                    fontSize="22px"
+                    lineHeight="1"
+                    color={color.white}
                   >
-                    <Text
-                      mt="7px"
-                      mx="auto"
-                      fontWeight="900"
-                      fontSize="22px"
-                      lineHeight="1"
-                      color={color.white}
-                    >
-                      {x < 3 ? 'O' : 'X'}
-                    </Text>
-                  </Box>
+                    {x < 3 ? 'O' : 'X'}
+                  </Text>
                 </Box>
-              ))}
-              <Box></Box>
-            </Grid>
-          )}
+              </Box>
+            ))}
+            <Box></Box>
+          </Grid>
 
           <Text
             mt="32px"
@@ -170,7 +167,7 @@ export default function Detail() {
       >
         <Button
           onClick={() => router.push(`/challenge/${id}/participate`)}
-          disabled={challenge.id !== challengeList[0].id}
+          // disabled={challenge.id !== challengeList[0].id}
           mt="auto"
           padding="16px 20px"
           h="fit-content"
@@ -178,11 +175,11 @@ export default function Detail() {
           fontSize="24px"
           lineHeight="30px"
           borderRadius="21px"
-          {...(challenge.id !== challengeList[0].id && {
-            background: '#6D6D6D',
-          })}
+          // {...(challenge.id !== challengeList[0].id && {
+          //   background: '#6D6D6D',
+          // })}
         >
-          {challenge.id === challengeList[0].id ? 'Join' : 'Coming Soon'}
+          Join
         </Button>
       </Box>
     </>

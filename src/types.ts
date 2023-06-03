@@ -1,5 +1,5 @@
 export type ChallengeType = {
-  id: string;
+  // id: string;
   deposit: number;
   title: string;
   image: string;
