@@ -32,7 +32,7 @@ export default function BalancePage() {
             {
               network: 'Near',
               unit: 'NEAR',
-              image: '/images/token/Near.svg',
+              image: '/images/token/near.png',
               balance: nearFormat(balance),
             },
           ]}
