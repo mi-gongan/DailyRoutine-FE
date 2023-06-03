@@ -10,7 +10,7 @@ export const account = '0xfs312a2f3E829C0b614566B3E152e417d14q6EP3';
 
 export const challengeList: Array<ChallengeType> = [
   {
-    id: '22',
+    id: '23',
     deposit: 3334,
     title: 'Participating in \nETH SEOUL',
     image: '/images/dummy/challenges/challenge_ethseoul.png',

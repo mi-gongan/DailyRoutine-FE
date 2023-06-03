@@ -4,6 +4,7 @@ import { ChakraProvider } from '@chakra-ui/react';
 import { GlobalStyle } from 'src/components/styles/GlobalStyle';
 import Head from 'next/head';
 import dynamic from 'next/dynamic';
+import { baseUri } from 'src/utils';
 
 function app({ Component, pageProps }) {
   return (
@@ -14,10 +15,8 @@ function app({ Component, pageProps }) {
           property="og:description"
           content="Bet your money on changing your habits!"
         />
-        <meta
-          property="og:image"
-          content="https://firebasestorage.googleapis.com/v0/b/image-upload-39ea1.appspot.com/o/images%2Fog%2Fog_img.png?alt=media&token=93041936-fed9-47b6-8289-4c72f7f33d78"
-        />
+        <meta property="og:image" content={baseUri + '/images/thumbnail.png'} />
+        <link rel="shortcut icon" href="/images/favicon.svg" />
       </Head>
       <GlobalStyle />
       <Component {...pageProps} />

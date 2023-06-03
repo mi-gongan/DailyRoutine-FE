@@ -4,7 +4,7 @@ import prisma from 'src/utils/prisma';
 
 export interface VerifyUnit {
   address: string;
-  challengeId: string;
+  challengeId: number;
   status: ExecutionStatus;
   count: number;
 }
@@ -20,7 +20,7 @@ export default async function handler(
       where: {
         account_challengeId_count: {
           account: verifyUnit.address,
-          challengeId: verifyUnit.challengeId,
+          challengeId: String(verifyUnit.challengeId),
           count: verifyUnit.count,
         },
       },

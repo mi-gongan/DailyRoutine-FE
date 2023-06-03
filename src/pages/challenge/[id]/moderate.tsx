@@ -58,7 +58,7 @@ export default function Moderate() {
       ...tempVerifiedUnits,
       {
         address: execution.account,
-        challengeId: execution.challenge_id,
+        challengeId: Number(id),
         count: execution.count,
         status,
       },
@@ -67,17 +67,18 @@ export default function Moderate() {
       setVerifiedUnits([
         ...verifiedUnits,
         {
-          challenge_id: Number(execution.id),
+          challenge_id: Number(id),
           user: execution.account,
-          index: execution.count,
+          index: Number(execution.count),
         },
       ]);
     }
   };
 
   const verifySubmit = async () => {
+    console.log(verifiedUnits);
     const contract: any = new Contract(account, CONTRACT_ID, {
-      changeMethods: ['participate'],
+      changeMethods: ['verify'],
       viewMethods: [],
     });
     try {
@@ -118,8 +119,8 @@ export default function Moderate() {
           />
           <Box as="ul" pt="7px">
             {[
-              'It should be confirmed that the user exercised on the gym or on the promenade',
-              'Number of r of participants',
+              'It should contain elements that symbolize ETH Seoul.',
+              'Photographing the sky is not allowed.',
               'Someone needs to come out',
             ].map((x) => (
               <Box
