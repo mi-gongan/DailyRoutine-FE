@@ -46,11 +46,11 @@ export default function Challenges() {
     });
     if (!contract) return;
     const res = await contract.get_total_betting_amount({
-      challenge_id: challengeList[0].id,
+      challenge_id: Number(challengeList[0].id),
     });
-
+    console.log(res);
     setTotalAmount(nearFormat(res));
-  }, []);
+  }, [account]);
 
   useEffect(() => {
     if (!account) return;

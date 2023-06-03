@@ -11,4 +11,4 @@ export function delay(ms: number) {
   return new Promise((resolve) => setTimeout(resolve, ms));
 }
 
-export const baseUri = process.env.BASE_URI || 'http://localhost:3000';
+export const baseUri = String(process.env.NEXT_PUBLIC_BASE_URI);
