@@ -105,7 +105,7 @@ export default function Moderate() {
         onConfirm={onConfirm}
         setIsModalOpen={setIsModalOpen}
       />
-      <Header title="Participating" returnUrl={`/challenge/${id}`} />
+      <Header title="verifying" returnUrl={`/challenge/${id}`} />
       {executions.length !== 0 && (
         <Box mt={16} bg={color.background.main} p="16px 20px" flex={1}>
           <Text
