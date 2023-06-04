@@ -16,6 +16,8 @@ import useNear from 'src/hook/useNear';
 import { Contract } from 'near-api-js';
 import { CONTRACT_ID } from 'src/utils/contract';
 import { VerifyUnit } from 'src/pages/api/execution/verify-execution';
+import { useRecoilState } from 'recoil';
+import { tempVerfiedUnitsState } from 'src/recoil/tempVerfiedUnits';
 
 export default function Moderate() {
   const router = useRouter();
@@ -26,7 +28,9 @@ export default function Moderate() {
   const [executions, setExecutions] = useState<Execution[]>([]);
   const challenge = challengeList[0];
   const [verifiedUnits, setVerifiedUnits] = useState([]);
-  const [tempVerifiedUnits, setTempVerifiedUnits] = useState<VerifyUnit[]>([]);
+  const [tempVerifiedUnits, setTempVerifiedUnits] = useRecoilState<
+    VerifyUnit[]
+  >(tempVerfiedUnitsState);
   const { accountId, account } = useNear();
 
   const onConfirm = (val) => {
@@ -35,7 +39,7 @@ export default function Moderate() {
     setCurrent(current + 1);
     setIsModalOpen(false);
   };
-
+  console.log(tempVerifiedUnits);
   const getExecution = useCallback(async () => {
     if (!id) return;
     const res = (
@@ -99,6 +103,7 @@ export default function Moderate() {
             verifyUnits: tempVerifiedUnits,
           })
           .then((res) => {
+            setTempVerifiedUnits([]);
             router.push('/challenges');
           });
       };

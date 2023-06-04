@@ -5,22 +5,34 @@ import { GlobalStyle } from 'src/components/styles/GlobalStyle';
 import Head from 'next/head';
 import dynamic from 'next/dynamic';
 import { baseUri } from 'src/utils';
+import {
+  RecoilRoot,
+  atom,
+  selector,
+  useRecoilState,
+  useRecoilValue,
+} from 'recoil';
 
 function app({ Component, pageProps }) {
   return (
     <ChakraProvider>
-      <Head>
-        <meta property="og:title" content="Daily Routine" />
-        <meta
-          property="og:description"
-          content="Bet your money on changing your habits!"
-        />
-        <meta property="og:image" content={baseUri + '/images/thumbnail.png'} />
-        <link rel="shortcut icon" href="/images/favicon.svg" />
-      </Head>
-      <GlobalStyle />
-      <Component {...pageProps} />
-      <div id="modal-root" />
+      <RecoilRoot>
+        <Head>
+          <meta property="og:title" content="Daily Routine" />
+          <meta
+            property="og:description"
+            content="Bet your money on changing your habits!"
+          />
+          <meta
+            property="og:image"
+            content={baseUri + '/images/thumbnail.png'}
+          />
+          <link rel="shortcut icon" href="/images/favicon.svg" />
+        </Head>
+        <GlobalStyle />
+        <Component {...pageProps} />
+        <div id="modal-root" />
+      </RecoilRoot>
     </ChakraProvider>
   );
 }
